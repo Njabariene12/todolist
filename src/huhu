@@ -1,0 +1,202 @@
+export function addpj(){   
+    const projectss = [];
+
+    function Pjtitle(project){
+        this.project = project;
+        console.log(project);
+    }
+
+    function addproject(projectadd){
+        projectss.push(projectadd)
+        showproject();
+    }
+
+    function showproject(){
+        const displays = document.getElementById("centerpage");
+        displays.innerHTML = "";
+        projectss.forEach((projectadd, index) => {
+    
+            const frame = document.createElement("div");
+            frame.classList.add("projectwindow");
+            frame.setAttribute("data-index", index);
+            frame.innerHTML = `<p>Title: ${projectadd.project} </p>`;   
+                
+        displays.innerHTML = frame.innerHTML;
+        })
+    }
+
+    document.getElementById("project-dialog").showModal();
+
+    document.getElementById("ps1").addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const project = document.getElementById("pjtitle").value;
+        projectss.push(project);
+        const newproject = new Pjtitle(project);
+        addproject(newproject);       
+    })
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function addpj(diva){
+    function Pjtitle(project){
+        this.project = project;
+        console.log(project);
+    }
+    
+    function Projectlib() {
+        this.proj = [];
+    
+        this.addproj = function(newprojo) {
+            this.proj.push(newprojo);
+        }
+    
+        this.getproj = function(projectName) {
+          return this.proj.find((projes) =>projes.name == projectName);
+        }
+      
+        this.removeProject = function(bookName) {
+          this.proj = this.books.filter((projes) => projes.name !== bookName);
+        }
+      
+        this.isInLibrary = function(newprojo) {
+          return this.proj.some((projes) => projes.name == newprojo.name)
+        }
+    }
+
+    const work = new Projectlib()
+
+    const projform = document.getElementById("project-dialog");
+
+    document.getElementById("addproject").addEventListener('click', function() {
+        projform.showModal();        
+    })
+    
+    document.getElementById("ps1").addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const projecto = document.getElementById("pjtitle");
+        
+        const newproject = new Pjtitle(projecto).value;
+        work.addproj(newproject);     
+        
+        const displays = document.getElementById("centerpage");
+        displays.innerHTML = newproject;
+       
+    })
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function addpj(projes){
+
+    const adda = document.getElementById("addproject");
+    const inputed = document.getElementById("pmtitle");
+    const proshow = document.getElementById("project-dialog");
+    const projectform = document.getElementById("projectform");
+    const pjsub = document.getElementById("ps1");
+    const shower = document.getElementById("centerpage");
+    const projitem = document.getElementById("projectlist");
+  
+    adda.addEventListener('click', function() {
+      proshow.style.display = "block";      
+    })  
+  
+    window.addEventListener('click', function(event) {
+      if (event.target === proshow) {
+          proshow.style.display = 'none';
+      }
+    });
+    pjsub.addEventListener("click", function(event){
+      
+      let projectss = [];
+      const projectName = inputed.value;
+      console.log(projectName);
+      projectss.push(projectName);
+      shower.innerHTML = projectName;
+  
+      
+    });
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  const projects = [];
+
+export function addpj(){
+  const nameproject = document.getElementById("pmtitle");
+  const projectpriority = document.getElementById("priority");
+
+  const proshow = document.getElementById("project-dialog");
+
+    if(proshow.style.display === "none"){
+        proshow.style.display = "block";
+    }else{
+        proshow.style.display = "none"
+    }
+
+  function Projectnaming(name, priority){
+    this.name = name;
+    this.priority = priority;
+    console.log(name, priority);
+  }
+
+  document.getElementById("ps1").addEventListener("click", (e) => {
+    e.preventDefault();
+    const display = document.getElementById("centerpage")
+
+    let newProject = new Projectnaming(nameproject.value, projectpriority.value);
+
+    const projectframe = document.createElement("div");
+    
+    projectframe.classList.add("projectwindow");
+  
+    projectframe.innerHTML = ` <p>Title: ${newProject.name}</p>
+        <p>Priority: ${newProject.priority}</p>`
+    display.appendChild(projectframe);
+   
+  });
+
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+function showmodal(){
+  const projects = [];
+    const proshow = document.getElementById("project-dialog");
+  
+    if(proshow.style.display === "none"){
+        proshow.style.display = "block";
+    }else{
+        proshow.style.display = "none"
+    }
+  }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+{
+  
+  const projectName = document.getElementById("pmtitle");
+  const projecttitle = projectName.value.trim();
+
+  if (projecttitle){
+    projects.push({"title": projecttitle,});
+    console.log(projects); 
+  }  
+};
+
+const showprojectlist = () => {
+  const displaya = document.getElementById("centerpage");
+  displaya.innerHTML = "";
+
+  projects.forEach(element => {
+    
+    const frame = document.createElement("div");
+    frame.innerHTML = `<p class="projectwindow">Title: ${element.projecttitle}</p>`;
+
+    displaya.appendChild(frame)
+  });
+}
+
+document.getElementById("ps1").addEventListener("click", () => {
+  addpj();
+  showprojectlist()
+})

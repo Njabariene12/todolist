@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The todo list</title>
+</head>
+<body>
+    <main>
+        <h1>The Todo App</h1>
+        <div class="displaytable">
+            
+            <label for="projectname">Project Name</label>
+            <input type="text" id="projectinput" class="inputfield">
+            <button id="addprojects">add project</button>
+            <p><span id="todocount">0</span>total projects</p>
+            <button id="deletebtn">delete</button>
+            
+            <hr class="counter">
+
+            <ul id="todoproject">
+                <li id="todoliste"></li>
+            </ul>
+  
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Add Task</h2>
+              <form id="modalForm">
+                <label for="name">Task Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="author">Date due</label>
+                <input type="date" id="date" name="date" required>
+                <label for="priority">Priority</label>
+                <input type="number" id="priority" name="pprority" min="1" required>
+                
+
+                <button id="tasksubmit" class="submit-button">Submit</button>
+              </form>
+            </div>
+          </div>
+        
+            
+        </ul>
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+  const addprojectbtn = document.getElementById("addprojects");
+  const projectinput = document.getElementById("projectinput");
+  const projectlist = document.getElementById("todoproject");
+
+  loadprojects()
+
+  function addproject(){
+    const project = projectinput.value.trim();
+
+    if(project){
+      createProjectElement(project);
+      projectinput.value = "";
+      saveprojects();
+      
+    }else{
+      alert("Please Enter a project");
+    }
+    
+  }
+  addprojectbtn.addEventListener("click", addproject);
+
+  function createProjectElement(project){
+    const listedprojects = document.createElement("li");
+    listedprojects.innerHTML = project;
+    projectlist.appendChild(listedprojects);
+  }
+
+  function saveprojects(){
+    let projects = [];
+    projectlist.querySelectorAll("li").forEach(function(item){
+      projects.push(item.textContent.trim());
+    });
+    localStorage.setItem('projects', JSON.stringify(projects));
+  }
+
+  function loadprojects(){
+    const projects = JSON.parse(localStorage.getItem('projects')) || [];
+    projects.forEach(createProjectElement);
+  }

@@ -1,0 +1,1 @@
+export const salut = "No friends on the left, no enemies on the right";
